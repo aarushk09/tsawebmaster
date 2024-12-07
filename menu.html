@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Vegan Restaurant</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-item {
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 25px;
+            background-color: rgba(0, 128, 0, 0.7);
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(0, 128, 0, 1);
+        }
+
+        .menu-header {
+            text-align: center;
+            padding: 50px 20px;
+            background: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
+            color: white;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .menu-header h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .menu-header p {
+            margin: 10px 0 0;
+            font-size: 1.5em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .menu-section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .menu-card-content {
+            padding: 20px;
+        }
+
+        .menu-card-title {
+            font-size: 1.5em;
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+        .menu-card-description {
+            margin: 0 0 15px;
+            color: #666;
+        }
+
+        .menu-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-card-price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .menu-card-arrow {
+            font-size: 1.5em;
+            color: rgba(0, 128, 0, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        .menu-card:hover .menu-card-arrow {
+            color: rgba(0, 128, 0, 1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="menu.html" class="nav-item">Menu</a>
+        <a href="#" class="nav-item">Gallery</a>
+        <a href="#" class="nav-item">Contact</a>
+    </nav>
+
+    <!-- Menu Header -->
+    <div class="menu-header">
+        <h1>Our Menu</h1>
+        <p>Delicious plant-based creations just for you</p>
+    </div>
+
+    <!-- Menu Section -->
+    <div class="menu-section">
+        <div class="menu-cards">
+            <div class="menu-card">
+                <div class="menu-card-image" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=1000');"></div>
+                <div class="menu-card-content">
+                    <h3 class="menu-card-title">Avocado Sushi Roll</h3>
+                    <p class="menu-card-description">Fresh avocado and cucumber wrapped in nori and sushi rice.</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$9.99</span>
+                        <span class="menu-card-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-card">
+                <div class="menu-card-image" style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=1000');"></div>
+                <div class="menu-card-content">
+                    <h3 class="menu-card-title">Lentil Shepherd's Pie</h3>
+                    <p class="menu-card-description">Hearty lentils topped with creamy mashed potatoes and herbs.</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$14.99</span>
+                        <span class="menu-card-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-card">
+                <div class="menu-card-image" style="background-image: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=1000');"></div>
+                <div class="menu-card-content">
+                    <h3 class="menu-card-title">Quinoa Buddha Bowl</h3>
+                    <p class="menu-card-description">A nourishing bowl of quinoa, roasted vegetables, and tahini dressing.</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$12.99</span>
+                        <span class="menu-card-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
