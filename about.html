@@ -3,170 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Vegan Restaurant</title>
+    <title>About Us - Vegetarian Restaurant</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            height: 100%;
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .container {
-            background-image: url('https://images.unsplash.com/photo-1556742044-3c52d6e88a57?auto=format&fit=crop&q=80&w=1000');
-            background-size: cover;
-            background-position: center;
-            border-radius: 25px;
-            width: calc(100% - 20px);
-            height: 700px;
-            position: relative;
-            overflow: hidden;
+            background-color: #f9f9f9;
         }
 
         .nav {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-around;
-            padding: 15px 0;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         .nav-item {
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 25px;
             background-color: rgba(0, 128, 0, 0.7);
             color: white;
-            padding: 10px 15px;
-            border-radius: 25px;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         .nav-item:hover {
             background-color: rgba(0, 128, 0, 1);
         }
 
-        .about-section {
+        .about-header {
+            text-align: center;
             padding: 50px 20px;
-            background-color: #f9f9f9;
+            background: url('https://images.unsplash.com/photo-1464347744102-11db6282f854?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
+            color: white;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
-        .about-title {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 30px;
+        .about-header h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .about-header p {
+            margin: 10px 0 0;
+            font-size: 1.5em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .about-section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .about-content {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .about-card {
-            background-color: white;
-            border-radius: 25px;
-            overflow: hidden;
-            width: calc(33.33% - 20px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            padding: 20px;
+        .about-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .about-text {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .team-section {
+            margin-top: 50px;
+        }
+
+        .team-title {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #333;
             text-align: center;
         }
 
-        .about-card:hover {
-            transform: translateY(-10px);
+        .team-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
-        .about-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 25px;
+        .team-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
         }
 
-        .about-card h3 {
-            font-size: 1.8em;
-            margin-top: 20px;
+        .team-card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 15px;
         }
 
-        .about-card p {
+        .team-card-name {
+            font-size: 1.5em;
+            margin: 0;
+            color: #333;
+        }
+
+        .team-card-role {
             font-size: 1em;
+            margin: 5px 0;
             color: #666;
-            margin-top: 10px;
         }
-
-        .about-card-footer {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-
     </style>
 </head>
 <body>
-    <div class="hero">
-        <div class="container">
-            <nav class="nav">
-                <a href="#" class="nav-item">Home</a>
-                <a href="#" class="nav-item">About Us</a>
-                <a href="#" class="nav-item">Menu</a>
-                <a href="#" class="nav-item">Our Approach</a>
-                <a href="#" class="nav-item">Sustainability</a>
-                <a href="#" class="nav-item">Gallery</a>
-                <a href="#" class="nav-item">Orders</a>
-                <a href="#" class="nav-item">Rewards</a>
-                <a href="#" class="nav-item">Apply</a>
-            </nav>
-        </div>
-    </div>
-    
-    <div class="about-section">
-        <h2 class="about-title">About Us</h2>
-        <div class="about-content">
-            <div class="about-card">
-                <img src="https://images.unsplash.com/photo-1506748686215-b6f72b0c65d7?auto=format&fit=crop&q=80&w=1000" alt="Our Mission">
-                <h3>Our Mission</h3>
-                <p>Our mission is to create a vibrant and sustainable future by providing plant-based meals that not only taste amazing but are also environmentally responsible.</p>
-                <div class="about-card-footer">Sustainability Focus</div>
-            </div>
-            <div class="about-card">
-                <img src="https://images.unsplash.com/photo-1561948955-9d7174b4c2d7?auto=format&fit=crop&q=80&w=1000" alt="Our Values">
-                <h3>Our Values</h3>
-                <p>We believe in nourishing our community, promoting healthy lifestyles, and reducing our carbon footprint through plant-based eating.</p>
-                <div class="about-card-footer">Community Driven</div>
-            </div>
-            <div class="about-card">
-                <img src="https://images.unsplash.com/photo-1603890844631-e58b913dbf43?auto=format&fit=crop&q=80&w=1000" alt="Our Story">
-                <h3>Our Story</h3>
-                <p>Founded in 2020, we began with a small mission to make plant-based food accessible and delicious for all. Today, we have grown into a community of like-minded individuals.</p>
-                <div class="about-card-footer">From Small Beginnings</div>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const navItems = document.querySelectorAll('.nav-item');
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="menu.html" class="nav-item">Menu</a>
+        <a href="about.html" class="nav-item">About Us</a>
+        <a href="#" class="nav-item">Contact</a>
+    </nav>
 
-            navItems.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    alert(<a href="about-us.html" class="nav-item">About Us</a>);
-                });
-            });
-        });
-    </script>
+    <!-- About Header -->
+    <div class="about-header">
+        <h1>About Us</h1>
+        <p>Our passion for plant-based dining</p>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-section">
+        <div class="about-content">
+            <h2 class="about-title">Our Story</h2>
+            <p class="about-text">
+                Welcome to our vegetarian restaurant, where we believe in the power of wholesome, plant-based ingredients to create meals that nourish the body and delight the senses. Our journey began with a simple vision: to provide a space where everyone can enjoy fresh, flavorful, and sustainable food that supports a healthier planet.
+            </p>
+            <p class="about-text">
+                Every dish we serve is crafted with care, using locally sourced ingredients and innovative recipes that celebrate the natural flavors of vegetables, grains, and legumes. Whether you're a dedicated vegetarian or just curious about plant-based dining, we invite you to join us on this delicious adventure.
+            </p>
+        </div>
+
+        <!-- Team Section -->
+        <div class="team-section">
+            <h2 class="team-title">Meet Our Team</h2>
+            <div class="team-cards">
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/100" alt="Chef">
+                    <h3 class="team-card-name">Aarush Kute</h3>
+                    <p class="team-card-role">Janitor</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/100" alt="Manager">
+                    <h3 class="team-card-name">Shrey Agarwal</h3>
+                    <p class="team-card-role">Professional Food eater</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://via.placeholder.com/100" alt="Designer">
+                    <h3 class="team-card-name">Prajit Chennupati</h3>
+                    <p class="team-card-role">Slave</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
