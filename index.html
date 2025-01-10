@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegan Oasis - A Culinary Journey</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            height: 100%;
+            background-color: #f0f5f0;
+            color: #2c3e50;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            background-color: #e8f5e9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(144, 238, 144, 0.2) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 15s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .container {
+            background-image: url('https://images.unsplash.com/photo-1533460004989-cef01064af7e?auto=format&fit=crop&q=80&w=1000');
+            background-size: cover;
+            background-position: center;
+            border-radius: 25px;
+            width: calc(100% - 20px);
+            height: 700px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            z-index: 100;
+        }
+
+        .nav-item {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-item:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+        }
+
+        .cards-section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 400px;
+            padding: 40px 20px;
+            background-color: #f0f5f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cards-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="%234CAF50" opacity="0.1"/></svg>') repeat;
+            z-index: 0;
+        }
+
+        .card {
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            color: white;
+            transition: all 0.3s ease;
+            width: 30%;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            width: 50%;
+            transform: translateY(-10px);
+        }
+
+        .card:hover::before {
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+        }
+
+        .card:not(:hover) {
+            width: 20%;
+        }
+
+        .card:not(:hover)::before {
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%);
+        }
+
+        .card h2, .card p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .card p {
+            display: none;
+            transition: all 0.3s ease;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .card:hover p {
+            display: block;
+        }
+
+        .menu-section {
+            padding: 50px 20px;
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 30s infinite linear;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .menu-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.5s ease;
+            color: #2c3e50;
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-card {
+            background-color: white;
+            border-radius: 25px;
+            overflow: hidden;
+            width: calc(33.33% - 20px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .menu-card-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 25px 25px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-card:hover .menu-card-image::before {
+            opacity: 1;
+        }
+
+        .menu-card-content {
+            padding: 20px;
+        }
+
+        .menu-card-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .menu-card-description {
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .menu-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-card-price {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .menu-card-arrow {
+            font-size: 1.5em;
+            transition: transform 0.3s ease;
+            color: #4CAF50;
+        }
+
+        .menu-card:hover .menu-card-arrow {
+            transform: translateX(5px);
+        }
+
+        .like-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .like-button::before {
+            content: '♥';
+            color: #bdc3c7;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .like-button.liked {
+            background-color: #e74c3c;
+        }
+
+        .like-button.liked::before {
+            color: white;
+        }
+
+        .approach-section {
+            padding: 50px 20px;
+            background-color: #f0f5f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .approach-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 0 L100 50 L50 100 L0 50 Z" fill="%234CAF50" opacity="0.05"/></svg>') repeat;
+            z-index: 0;
+        }
+
+        .approach-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            position: relative;
+            z-index: 1;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .approach-card {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .approach-card:nth-child(3n+1) {
+            grid-column: span 2;
+        }
+
+        .approach-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .approach-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c3e50;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .approach-card:hover .approach-card-content {
+            transform: translateY(0);
+        }
+
+        .approach-card-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            color: #4CAF50;
+        }
+
+        .approach-card:hover .approach-card-title {
+            transform: translateY(-20px);
+        }
+
+        .approach-card-description {
+            opacity: 0;
+            transition: all 0.3s ease;
+            font-weight: 300;
+        }
+
+        .approach-card:hover .approach-card-description {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="menu.html" class="nav-item">Menu</a>
+                <a href="about.html" class="nav-item">About Us</a>
+                <a href="contact.html" class="nav-item">Contact</a>
+            </nav>
+        </div>
+    </div>
+    <div class="cards-section">
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1564758565426-1a503a79d63e?auto=format&fit=crop&q=80&w=1000');">
+            <h2>Prague</h2>
+            <p>Botanical Coffee Shop in Prague offers a serene oasis with its lush decor and artisanal coffees.</p>
+        </div>
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1000');">
+            <h2>New York</h2>
+            <p>Experience the vibrant vegan scene in the heart of New York City with our innovative plant-based cuisine.</p>
+        </div>
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1000');">
+            <h2>Tokyo</h2>
+            <p>Discover the fusion of traditional Japanese flavors and modern vegan cooking techniques in our Tokyo location.</p>
+        </div>
+    </div>
+    <div class="menu-section">
+        <h2 class="menu-title">Our Sample Menu</h2>
+        <div class="menu-cards">
+            <div class="menu-card">
+                <button class="like-button"></button>
+                <div class="menu-card-image" style="background-image: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=1000');"></div>
+                <div class="menu-card-content">
+                    <h3 class="menu-card-title">Quinoa Buddha Bowl</h3>
+                    <p class="menu-card-description">A nourishing bowl of quinoa, roasted vegetables, and tahini dressing.</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$12.99</span>
+                        <span class="menu-card-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-card">
+                <button class="like-button"></button>
+                <div class="menu-card-image" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=1000');"></div>
+                <div class="menu-card-content">
+                    <h3 class="menu-card-title">Avocado Sushi Roll</h3>
+                    <p class="menu-card-description">Fresh avocado and cucumber wrapped in nori and sushi rice.</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$9.99</span>
+                        <span class="menu-card-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-card">
+                <button class="like-button"></button>
+                <div class="menu-card-image" style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=1000');"></div>
+                <div class="menu-card-content">
+                    <h3 class="menu-card-title">Lentil Shepherd's Pie</h3>
+                    <p class="menu-card-description">Hearty lentils topped with creamy mashed potatoes and herbs.</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$14.99</span>
+                        <span class="menu-card-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="approach-section">
+        <h2 class="approach-title">Our Approach</h2>
+        <div class="approach-grid">
+            <div class="approach-card">
+                <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&q=80&w=2000" alt="Approach 1">
+                <div class="approach-card-content">
+                    <h3 class="approach-card-title">Sustainable Sourcing</h3>
+                    <p class="approach-card-description">Our first approach focuses on sustainable sourcing of ingredients, ensuring that every dish we serve contributes to environmental conservation.</p>
+                </div>
+            </div>
+            <div class="approach-card">
+                <img src="https://images.unsplash.com/photo-1607877742574-a483adcf3d5c?auto=format&fit=crop&q=80&w=2000" alt="Approach 2">
+                <div class="approach-card-content">
+                    <h3 class="approach-card-title">Zero-Waste Cooking</h3>
+                    <p class="approach-card-description">We prioritize zero-waste cooking techniques, utilizing every part of our ingredients to minimize food waste and maximize flavor.</p>
+                </div>
+            </div>
+            <div class="approach-card">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=2000" alt="Approach 3">
+                <div class="approach-card-content">
+                    <h3 class="approach-card-title">Innovative Recipes</h3>
+                    <p class="approach-card-description">Our innovative plant-based recipes are designed to provide complete nutrition while tantalizing your taste buds.</p>
+                </div>
+            </div>
+            <div class="approach-card">
+                <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&q=80&w=2000" alt="Approach 4">
+                <div class="approach-card-content">
+                    <h3 class="approach-card-title">Community Outreach</h3>
+                    <p class="approach-card-description">We engage in community outreach programs to educate and promote the benefits of a plant-based lifestyle.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const menuTitle = document.querySelector('.menu-title');
+            const likeButtons = document.querySelectorAll('.like-button');
+
+            window.addEventListener('scroll', () => {
+                const menuSectionTop = document.querySelector('.menu-section').offsetTop;
+                const scrollPosition = window.scrollY + window.innerHeight;
+
+                if (scrollPosition > menuSectionTop) {
+                    menuTitle.classList.add('visible');
+                }
+            });
+
+            likeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    button.classList.toggle('liked');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

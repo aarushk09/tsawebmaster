@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Vegan Oasis</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #f0f5f0;
+            color: #2c3e50;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-item {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background-color: #4CAF50;
+            color: white;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-item:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+        }
+
+        .about-header {
+            text-align: center;
+            padding: 150px 20px 100px;
+            background: url('https://images.unsplash.com/photo-1464347744102-11db6282f854?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
+            color: white;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .about-header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .about-header p {
+            margin: 10px 0 0;
+            font-size: 1.5em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="%234CAF50" opacity="0.1"/></svg>') repeat;
+            z-index: -1;
+        }
+
+        .about-content {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 30s infinite linear;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .about-title {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .about-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #34495e;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .team-section {
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .team-title {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            text-align: center;
+            position: relative;
+        }
+
+        .team-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-card img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            border: 5px solid #4CAF50;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .team-card-name {
+            font-size: 1.8em;
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .team-card-role {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: scale(0);
+            transition: all 0.5s ease;
+        }
+
+        .team-card:hover::before {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="menu.html" class="nav-item">Menu</a>
+        <a href="about.html" class="nav-item">About Us</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+    </nav>
+
+    <!-- About Header -->
+    <div class="about-header">
+        <h1>About Us</h1>
+        <p>Our passion for plant-based dining</p>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-section">
+        <div class="about-content">
+            <h2 class="about-title">Our Story</h2>
+            <p class="about-text">
+                Welcome to Vegan Oasis, where we believe in the power of wholesome, plant-based ingredients to create meals that nourish the body and delight the senses. Our journey began with a simple vision: to provide a space where everyone can enjoy fresh, flavorful, and sustainable food that supports a healthier planet.
+            </p>
+            <p class="about-text">
+                Every dish we serve is crafted with care, using locally sourced ingredients and innovative recipes that celebrate the natural flavors of vegetables, grains, and legumes. Whether you're a dedicated vegan or just curious about plant-based dining, we invite you to join us on this delicious adventure.
+            </p>
+        </div>
+
+        <!-- Team Section -->
+        <div class="team-section">
+            <h2 class="team-title">Meet Our Team</h2>
+            <div class="team-cards">
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Chef">
+                    <h3 class="team-card-name">Aarush Kute</h3>
+                    <p class="team-card-role">Head of Cleanliness</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Manager">
+                    <h3 class="team-card-name">Shrey Agarwal</h3>
+                    <p class="team-card-role">Chief Taste Tester</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Designer">
+                    <h3 class="team-card-name">Prajit Chennupati</h3>
+                    <p class="team-card-role">Master of All Trades</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
