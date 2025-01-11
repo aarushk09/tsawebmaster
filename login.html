@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup with Firebase</title>
+    
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Login Form -->
+        <div class="form-container" id="login-form">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="email">Email</label>
+                <input type="email" id="login-email" name="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="login-password" name="password" required>
+                <button type="submit">Login</button>
+                <p>Don't have an account? <a href="#" onclick="showSignup()">Sign up</a></p>
+            </form>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="form-container hidden" id="signup-form">
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <label for="name">Full Name</label>
+                <input type="text" id="signup-name" name="name" required>
+                <label for="email">Email</label>
+                <input type="email" id="signup-email" name="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="signup-password" name="password" required>
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDHouvpD3AU0DC3rB0WCNkaKYG1iZeqAwA",
+          authDomain: "webmaster-5b278.firebaseapp.com",
+          projectId: "webmaster-5b278",
+          storageBucket: "webmaster-5b278.firebasestorage.app",
+          messagingSenderId: "852794630816",
+          appId: "1:852794630816:web:fda9cee57c024dd70b1fc5",
+          measurementId: "G-FLM3H1KC32"
+        };
+      
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+    
+    <script type="module" src="auth.js"></script>
+</body>
+</html>
+
