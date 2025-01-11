@@ -40,6 +40,12 @@ document.getElementById("signupForm").addEventListener("submit", (e) => {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
+            // Add user details to Firestore
+            setDoc(doc(firestore, "users", user.uid), {
+                fullName: fullName,
+                email: email,
+                createdAt: new Date().toISOString()
+            });
             alert("User signed up successfully!");
             showLogin(); // Redirect to login form
         })
