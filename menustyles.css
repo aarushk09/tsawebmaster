@@ -1,0 +1,123 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-item {
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 25px;
+    background-color: rgba(0, 128, 0, 0.7);
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.nav-item:hover {
+    background-color: rgba(0, 128, 0, 1);
+}
+
+.menu-header {
+    text-align: center;
+    padding: 50px 20px;
+    background: url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
+    color: white;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.menu-header h1 {
+    font-size: 3em;
+    margin: 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.menu-header p {
+    margin: 10px 0 0;
+    font-size: 1.5em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.menu-section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.menu-card {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.menu-card-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.menu-card-content {
+    padding: 20px;
+}
+
+.menu-card-title {
+    font-size: 1.5em;
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.menu-card-description {
+    margin: 0 0 15px;
+    color: #666;
+}
+
+.menu-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-card-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.menu-card-arrow {
+    font-size: 1.5em;
+    color: rgba(0, 128, 0, 0.7);
+    transition: color 0.3s ease;
+}
+
+.menu-card:hover .menu-card-arrow {
+    color: rgba(0, 128, 0, 1);
+}
