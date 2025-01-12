@@ -5,18 +5,6 @@ body, html {
     height: 100%;
     background-color: #f0f0f0;
 }
-
-.hero {
-    height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&q=80&w=2000');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
 .hero-title {
     color: white;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
@@ -25,7 +13,6 @@ body, html {
     padding: 10px 20px;
     border-radius: 10px;
 }
-
 .nav {
     position: absolute;
     top: 0;
@@ -37,7 +24,6 @@ body, html {
     justify-content: space-around;
     padding: 15px 0;
 }
-
 .nav-item {
     background-color: rgba(0, 128, 0, 0.7);
     color: white;
@@ -46,23 +32,19 @@ body, html {
     text-decoration: none;
     transition: all 0.3s ease;
 }
-
 .nav-item:hover {
     background-color: rgba(0, 128, 0, 1);
 }
-
 .approach-section {
     padding: 50px 20px;
     background-color: white;
 }
-
 .approach-title {
     text-align: center;
     font-size: 2.5em;
     margin-bottom: 30px;
     color: #006400;
 }
-
 .approach-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -70,7 +52,6 @@ body, html {
     max-width: 1200px;
     margin: 0 auto;
 }
-
 .approach-card {
     position: relative;
     border-radius: 25px;
@@ -79,14 +60,12 @@ body, html {
     transition: all 0.3s ease;
     background-color: #f0f0f0;
 }
-
 .approach-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: all 0.3s ease;
 }
-
 .approach-card-content {
     position: absolute;
     bottom: 0;
@@ -98,22 +77,18 @@ body, html {
     transform: translateY(100%);
     transition: all 0.3s ease;
 }
-
 .approach-card:hover .approach-card-content {
     transform: translateY(0);
 }
-
 .approach-card-title {
     font-size: 1.5em;
     margin-bottom: 10px;
     transition: all 0.3s ease;
 }
-
 .approach-card-description {
     opacity: 0;
     transition: all 0.3s ease;
 }
-
 .approach-card:hover .approach-card-description {
     opacity: 1;
 }
