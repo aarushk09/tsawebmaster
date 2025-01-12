@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image References</title>
     <link rel="stylesheet" href="indexstyles.css">
+    <link rel="stylesheet" href="referencesstyles.css">
 </head>
 <body>
     <nav class="nav">
@@ -18,27 +19,48 @@
         <a href="reservations.html" class="nav-item">Reservations</a>
         <a href="rewards.html" class="nav-item">Rewards</a>
         <a href="apply.html" class="nav-item">Apply</a>
-        <a href="references.html" class="nav-item">References</a>
+        <a href="references.html" class="nav-item active">References</a>
         <a href="login.html" class="nav-item" style="background-color: red" id="logout-button">Logout</a>
     </nav>
     <script type="module">
         import { signOut } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
         import { auth } from "./firestore.js";
-        // Function to log the user out
         function logoutUser() {
-        signOut(auth)
-            .then(() => {
-            // User signed out successfully
-            console.log("User logged out");
-            window.location.href = "login.html";  // Redirect to the login page after logout
-            })
-            .catch((error) => {
-            // Handle errors if any
-            console.error("Error logging out: ", error);
-            });
+            signOut(auth)
+                .then(() => {
+                    console.log("User logged out");
+                    window.location.href = "login.html";
+                })
+                .catch((error) => {
+                    console.error("Error logging out: ", error);
+                });
         }
         document.getElementById("logout-button").addEventListener("click", logoutUser);
     </script>
+
+    <section class="references-section">
+        <h1 class="references-title">Image References</h1>
+        <ol class="references-list">
+            <li><a href="#" onclick="showPopup('https://images.unsplash.com/photo-1463143296037-46790ff95a7e?q=80&w=2070&auto=format&fit=crop')">Prague Image</a></li>
+            <li><a href="#" onclick="showPopup('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1000')">New York</a></li>
+            <li><a href="#" onclick="showPopup('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1000')">Tokyo</a></li>
+            <li><a href="#" onclick="showPopup('https://images.unsplash.com/photo-1602554171817-8467dd4310d9?q=80&w=2070&auto=format&fit=crop')">Avocado Sushi</a></li>
+            <li><a href="#" onclick="showPopup('https://images.unsplash.com/photo-1520066391310-428f06ebd602?q=80&w=2075&auto=format&fit=crop')">Quinoa Bowl</a></li>
+            <li><a href="#" onclick="showPopup('https://images.unsplash.com/photo-1612204078213-a227dba74093?q=80&w=2080&auto=format&fit=crop')">Vegan Mushroom Risotto</a></li>
+            <li><a href="#" onclick="showPopup('https://images.unsplash.com/photo-1604467715878-83e57e8bc129?q=80&w=1976&auto=format&fit=crop')">Sweet Potato Tacos</a></li>
+            <li><a href="#" onclick="showPopup('https://plus.unsplash.com/premium_photo-1695151833063-a81c6772de96?q=80&w=1974&auto=format&fit=crop')">Tofu Stir-Fry</a></li>
+            <li><a href="#" onclick="showPopup('https://images.unsplash.com/photo-1590080874810-8180c3eb1016?q=80&w=2098&auto=format&fit=crop')">Vegan Chocolate Cake</a></li>
+            <li><a href="#" onclick="showPopup('https://plus.unsplash.com/premium_photo-1664647731571-c6014eaee88e?q=80&w=2070&auto=format&fit=crop')">Vegan Cauliflower</a></li>
+        </ol>
+    </section>
+
+    <!-- Popup Modal -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="closePopup()">×</span>
+            <p id="popup-text"></p>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-container">
@@ -73,5 +95,16 @@
             <p>&copy; 2025 Vegan Restaurant. All rights reserved.</p>
         </div>
     </footer>
-    
+
+    <script>
+        function showPopup(link) {
+            document.getElementById('popup-text').textContent = link;
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
 </body>
+</html>
