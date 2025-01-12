@@ -6,9 +6,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
 
-/**
- * Displays the user's current points and updates the progress bar.
- */
+
 async function displayRewards() {
     const user = auth.currentUser;
     if (user) {
@@ -19,7 +17,7 @@ async function displayRewards() {
             if (userDoc.exists()) {
                 const userData = userDoc.data();
                 const points = Math.min(Math.floor(userData.points || 0), 100); // Cap points at 100
-                document.getElementById('points').innerText = `${points}/100`;
+                document.getElementById('points').innerText = points;
 
                 // Update progress bar
                 const progressFill = document.getElementById('progress-fill');
@@ -35,31 +33,27 @@ async function displayRewards() {
                 }
             } else {
                 console.error("No such user document!");
-                document.getElementById('points').innerText = '0/100';
+                document.getElementById('points').innerText = '0';
                 resetProgressBar();
             }
         } catch (error) {
             console.error("Error fetching user data:", error);
-            document.getElementById('points').innerText = '0/100';
+            document.getElementById('points').innerText = '0';
             resetProgressBar();
         }
     } else {
-        document.getElementById('points').innerText = '0/100';
+        document.getElementById('points').innerText = '0';
         resetProgressBar();
     }
 }
 
-/**
- * Resets the progress bar and hides the goal message.
- */
+
 function resetProgressBar() {
     document.getElementById('progress-fill').style.width = '0%';
     document.getElementById('goal-message').style.display = 'none';
 }
 
-/**
- * Updates the user's points based on the cart total from localStorage.
- */
+
 async function updatePoints() {
     const user = auth.currentUser;
     if (user) {
@@ -78,9 +72,7 @@ async function updatePoints() {
     }
 }
 
-/**
- * Initializes the rewards display based on authentication state.
- */
+
 function initializeRewards() {
     onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -90,7 +82,6 @@ function initializeRewards() {
         }
     });
 
-    // Optional: Update points when the cart total changes
     window.addEventListener('storage', (event) => {
         if (event.key === 'cartTotal') {
             updatePoints();
@@ -98,5 +89,4 @@ function initializeRewards() {
     });
 }
 
-// Initialize the rewards system when the script loads
 initializeRewards();
