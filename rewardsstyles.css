@@ -4,7 +4,7 @@ body, html {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
 }
-
+  
 .nav {
     display: flex;
     justify-content: space-around;
@@ -29,102 +29,78 @@ body, html {
 .nav-item:hover {
     background-color: rgba(0, 128, 0, 1);
 }
-
-.about-header {
+  
+  .reservation-section {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: left;
+  }
+  
+  .reservation-section h2 {
     text-align: center;
-    padding: 50px 20px;
-    background: url('https://images.unsplash.com/photo-1464347744102-11db6282f854?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
-    color: white;
-    height: 300px;
+    margin-bottom: 1rem;
+    border: 1px solid #333;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+  }
+  
+
+  .reservation-form {
+    margin-top: 2rem;
+    border: 1px solid #333;
+    padding: 1rem;
+  }
+  
+
+  .form-row {
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-direction: column;
-}
-
-.about-header h1 {
-    font-size: 3em;
-    margin: 0;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-}
-
-.about-header p {
-    margin: 10px 0 0;
-    font-size: 1.5em;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-}
-
-.about-section {
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.about-content {
-    background-color: white;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.about-title {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.about-text {
-    font-size: 1.2em;
-    line-height: 1.8;
-    color: #666;
-}
-
-.team-section {
-    margin-top: 50px;
-}
-
-.team-title {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-}
-
-.team-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.team-card {
-    background-color: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 20px;
-}
-
-.team-card img {
-    border-radius: 50%;
+    margin-bottom: 1rem;
+    flex-wrap: wrap; 
+  }
+  
+  .form-row label {
     width: 100px;
-    height: 100px;
-    margin-bottom: 15px;
-}
+    font-weight: 500;
+    margin-right: 0.5rem;
+  }
+  
+  .date-label {
+    margin-left: 2rem;
+  }
+  
+  .form-row input {
+    padding: 0.4rem;
+    flex: 1; 
+    min-width: 100px;
+    margin-right: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
 
-.team-card-name {
-    font-size: 1.5em;
-    margin: 0;
-    color: #333;
-}
+  .book-now {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+  }
+  
+  .book-now button {
+    padding: 0.7rem 1.5rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .book-now button:hover {
+    background-color: #555;
+  }
 
-.team-card-role {
-    font-size: 1em;
-    margin: 5px 0;
-    color: #666;
-}
-
-.footer {
+  .footer {
     background-color: #333;
     color: #fff;
     padding: 40px 20px;
@@ -216,3 +192,5 @@ body, html {
     margin-top: 20px;
     font-size: 0.8em;
 }
+
+  
