@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rewards</title>
     <link rel="stylesheet" href="rewardsstyles.css" />
+    <!-- Consider adding a Google Font for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -19,53 +21,35 @@
         <a href="gallery.html" class="nav-item">Gallery</a>
         <a href="orders.html" class="nav-item">Cart</a>
         <a href="reservations.html" class="nav-item">Reservations</a>
-        <a href="rewards.html" class="nav-item">Rewards</a>
+        <a href="rewards.html" class="nav-item active">Rewards</a>
         <a href="apply.html" class="nav-item">Apply</a>
         <a href="contact.html" class="nav-item">Contact</a>
         <a href="references.html" class="nav-item">References</a>
     </nav>
 
     <section class="rewards-section">
-        <h2>Rewards</h2>
+        <div class="rewards-header">
+            <h1>Welcome to Our Rewards Program</h1>
+            <p>Earn points and enjoy exclusive benefits with every visit!</p>
+        </div>
 
         <div class="rewards-content">
             <div class="rewards-blurb">
                 <p>
-                    Our rewards program is designed to show our gratitude to our loyal customers. By joining, you’ll
-                    earn points every time you dine with us or place an order, which can be redeemed for special perks,
-                    discounts, and exclusive menu offerings. You’ll also receive personalized deals for birthdays,
-                    holidays, and other celebrations, making each visit a little more special. Whether you prefer to
-                    dine in, take out, or have meals delivered to your door, you’ll find countless ways to earn and
-                    enjoy the benefits of our rewards program. We can’t wait to reward you for being an essential part
-                    of our family!
+                    Our rewards program is designed to show our gratitude to our loyal customers. By joining, you’ll earn points every time you dine with us or place an order, which can be redeemed for special perks, discounts, and exclusive menu offerings. You’ll also receive personalized deals for birthdays, holidays, and other celebrations, making each visit a little more special. Whether you prefer to dine in, take out, or have meals delivered to your door, you’ll find countless ways to earn and enjoy the benefits of our rewards program. We can’t wait to reward you for being an essential part of our family!
                 </p>
             </div>
 
-            <div class="login-box">
-                <h3>Login/Sign Up</h3>
-                <form class="login-form" id="loginForm">
-                    <div class="form-row">
-                        <label for="email">Email Address:</label>
-                        <input type="email" id="login-email" placeholder="Enter your email" required />
-                    </div>
-
-                    <div class="form-row">
-                        <label for="password">Password:</label>
-                        <input type="password" id="login-password" placeholder="Enter your password" required />
-                    </div>
-
-                    <button type="submit">Enter</button>
-                </form>
-            </div>
-
-            <!-- Added Rewards Display -->
+            <!-- Rewards Display Section -->
             <div class="rewards-display">
-                <h3>Your Rewards</h3>
-                <p>Points: <span id="points">0</span></p>
-                <!-- Add more rewards details as needed -->
-
-                <!-- Testing: Add 50 Points Button -->
-                <button onclick="addPoints()">+50 Points</button>
+                <h2>Your Rewards</h2>
+                <div class="points-container">
+                    <p>Points: <span id="points">0</span></p>
+                </div>
+                <div class="points-buttons">
+                    <button class="btn add-btn" onclick="addPoints()">+50 Points</button>
+                    <button class="btn remove-btn" onclick="removePoints()">-50 Points</button>
+                </div>
             </div>
         </div>
     </section>
@@ -104,7 +88,7 @@
         </div>
     </footer>
 
-    <!-- Added Rewards Script -->
+    <!-- Rewards Script -->
     <script type="module" src="rewards.js"></script>
 </body>
 
