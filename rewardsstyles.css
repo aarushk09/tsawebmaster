@@ -200,7 +200,28 @@ body, html {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+/* Progress Bar Styles */
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 25px;
+  overflow: hidden;
+  height: 30px;
+  margin-top: 10px;
+}
 
+.progress-fill {
+  height: 100%;
+  background-color: #32cd32; /* LimeGreen */
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+.goal-message {
+  margin-top: 10px;
+  color: #228b22; /* ForestGreen */
+  font-weight: bold;
+}
 .footer-subscribe button:hover {
   background-color: #5ca872;
 }
@@ -210,3 +231,30 @@ body, html {
   margin-top: 20px;
   font-size: 0.8em;
 }
+<<<<<<< HEAD
+
+  
+/* Progress Bar Styles */
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 25px;
+  overflow: hidden;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #32cd32; /* LimeGreen */
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+.goal-message {
+  margin-top: 10px;
+  color: #228b22; /* ForestGreen */
+  font-weight: bold;
+}
+=======
+>>>>>>> 753de598838e66582cd878ef48546f449b2ab078
