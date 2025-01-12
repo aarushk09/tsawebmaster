@@ -1,7 +1,7 @@
 // Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -18,7 +18,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
 
 // Function to switch between login and signup forms
 function showLogin() {
@@ -31,44 +30,58 @@ function showSignup() {
     document.getElementById("login-form").classList.add("hidden");
 }
 
-// Signup Form Submission
-document.getElementById("signupForm").addEventListener("submit", (e) => {
+// Handle user signup
+const signupForm = document.getElementById('signupForm');
+signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const email = document.getElementById("signup-email").value;
-    const password = document.getElementById("signup-password").value;
-
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            // Add user details to Firestore
-            setDoc(doc(firestore, "users", user.uid), {
-                fullName: fullName,
-                email: email,
-                createdAt: new Date().toISOString()
-            });
-            alert("User signed up successfully!");
-            showLogin(); // Redirect to login form
-        })
-        .catch((error) => {
-            alert(`Error: ${error.message}`);
+    const name = document.getElementById('signup-name').value;
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+    try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        // Create rewards document for the new user
+        await setDoc(doc(firestore, "rewards", user.uid), {
+            points: 0,
+            rewards: []
         });
+        showLogin();
+    } catch (error) {
+        console.error("Error signing up:", error);
+    }
 });
 
-// Login Form Submission
-document.getElementById("loginForm").addEventListener("submit", (e) => {
+// Handle user login
+const loginForm = document.getElementById('loginForm');
+loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    try {
+        await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+        console.error("Error logging in:", error);
+    }
+});
 
-    const email = document.getElementById("login-email").value;
-    const password = document.getElementById("login-password").value;
-
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            alert("Login successful!");
-            // Add your redirect or post-login logic here
-        })
-        .catch((error) => {
-            alert(`Error: ${error.message}`);
-        });
+// Listen for auth state changes
+onAuthStateChanged(auth, async (user) => {
+    if (user) {
+        // User is signed in, fetch rewards
+        const rewardsDoc = await getDoc(doc(firestore, "rewards", user.uid));
+        if (rewardsDoc.exists()) {
+            const rewardsData = rewardsDoc.data();
+            // Example: Store rewards data or update UI as needed
+            console.log("User rewards:", rewardsData);
+        } else {
+            // Create rewards document if it doesn't exist
+            await setDoc(doc(firestore, "rewards", user.uid), {
+                points: 0,
+                rewards: []
+            });
+        }
+    } else {
+        // User is signed out
+        console.log("User signed out");
+    }
 });

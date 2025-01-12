@@ -1,5 +1,5 @@
-import { auth, firestore } from "./firestore.js"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+import { auth, firestore } from "./firestore.js";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
 import { doc, setDoc } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js";
 
 // Function to switch between login and signup forms
@@ -19,25 +19,25 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
 
     const email = document.getElementById("signup-email").value;
     const password = document.getElementById("signup-password").value;
-    const fullName = document.getElementById("signup-name").value; // Add a fullname field in your form
+    const fullName = document.getElementById("signup-name").value;
 
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
-        console.log(user);
-
-        // Add user details to Firestore
+        // Add user details to Firestore with points initialized to 0
         await setDoc(doc(firestore, "users", user.uid), {
             fullName: fullName,
             email: email,
-            createdAt: new Date().toISOString()
+            createdAt: new Date().toISOString(),
+            points: 0 // Initialize points
         });
 
-        alert("User signed up successfully!");
-        showLogin(); // Redirect to login form
+        showLogin();
+        alert("Signup successful! Please log in.");
     } catch (error) {
-        alert(`Error: ${error.message}`);
+        console.error("Error signing up:", error);
+        alert("Signup failed: " + error.message);
     }
 });
 
@@ -49,10 +49,25 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     const password = document.getElementById("login-password").value;
 
     try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        alert("Login successful!");
-        // Add your redirect or post-login logic here
+        await signInWithEmailAndPassword(auth, email, password);
+        // Redirect to rewards page after successful login
+        window.location.href = "rewards.html";
     } catch (error) {
-        alert(`Error: ${error.message}`);
+        console.error("Error logging in:", error);
+        alert("Login failed: " + error.message);
+    }
+});
+
+// Listen for Auth State Changes (Optional: for maintaining UI state)
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        console.log("User is signed in:", user.uid);
+        // Optionally, redirect to rewards page if already logged in
+        if (window.location.pathname.endsWith("login.html")) {
+            window.location.href = "rewards.html";
+        }
+    } else {
+        console.log("No user is signed in.");
+        // Optionally, stay on login/signup page
     }
 });
