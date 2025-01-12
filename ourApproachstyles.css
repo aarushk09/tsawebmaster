@@ -1,54 +1,42 @@
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+    font-family: Arial, sans-serif;
+    height: 100%;
 }
 
 .hero {
-    background: url('restaurant1.jpg') no-repeat center center/cover;
     height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    padding: 10px;
+    z-index: 1000;
+    background: url(restaurant1.jpg);
 }
-
-.hero-title {
-    color: white;
-    font-size: 3.5em;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-    background: rgba(0, 128, 0, 0.8);
-    padding: 15px 30px;
-    border-radius: 10px;
-}
-
 .nav {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
     display: flex;
-    justify-content: center;
-    padding: 10px 0;
+    justify-content: space-around;
+    padding: 15px 0;
 }
-
 
 .nav-item {
-    margin: 0 15px;
-    padding: 10px 20px;
-    background-color: #76c38f;
+    background-color: rgba(0, 128, 0, 0.7);
     color: white;
-    text-decoration: none;
+    padding: 10px 15px;
     border-radius: 25px;
-    transition: all 0.2s ease;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.nav-item:hover,
-.nav-item.active {
-    background-color: #5ca872;
+.nav-item:hover {
+    background-color: rgba(0, 128, 0, 1);
 }
 
 .approach-section {
