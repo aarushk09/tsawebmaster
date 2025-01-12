@@ -1,4 +1,6 @@
 import { auth, firestore } from "./firestore.js"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js";
 
 // Function to switch between login and signup forms
 function showLogin() {
