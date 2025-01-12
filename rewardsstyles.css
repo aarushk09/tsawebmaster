@@ -194,3 +194,25 @@ body, html {
 }
 
   
+/* Progress Bar Styles */
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 25px;
+  overflow: hidden;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #32cd32; /* LimeGreen */
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+.goal-message {
+  margin-top: 10px;
+  color: #228b22; /* ForestGreen */
+  font-weight: bold;
+}
