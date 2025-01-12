@@ -32,7 +32,7 @@
         </div>
 
         <!-- Example cart item -->
-        <div class="cart-item d-flex align-items-center">
+        <div class="cart-item d-flex align-items-center" id="cart-container2">
             <img src="https://via.placeholder.com/80" alt="Product Image">
             <div class="details flex-fill">
                 <h5 class="mb-1">Product Name</h5>
@@ -48,7 +48,7 @@
         </div>
 
         <!-- Cart Summary -->
-        <div class="cart-summary">
+        <div class="cart-summary" id="cart-summary">
             <h3>Order Summary</h3>
             <p>Subtotal: $40.00</p>
             <p>Tax: $2.00</p>
@@ -94,7 +94,7 @@
                 }
       
                 // Clear the current cart items in the DOM
-                const cartContainer = document.querySelector('.cart-container');
+                const cartContainer = document.getElementById("cart-container2");
                 cartContainer.innerHTML = ""; // Clear existing cart items
                 
                 // Dynamically populate the cart with items
@@ -109,12 +109,8 @@
                       <p class="mb-0 text-muted">${item.description || 'Product description or details'}</p>
                     </div>
                     <div>$${item.price}</div>
-                    <div class="d-flex align-items-center mx-3">
-                      <button class="btn btn-outline-secondary btn-sm">-</button>
-                      <input type="number" class="form-control mx-2" value="${item.quantity}" min="1" style="width: 60px;">
-                      <button class="btn btn-outline-secondary btn-sm">+</button>
-                    </div>
-                    <div>$${(item.price * item.quantity).toFixed(2)}</div>
+                    
+                    
                   `;
                   
                   cartContainer.appendChild(cartItem);
@@ -123,20 +119,20 @@
                 // Calculate and display order summary
                 const subtotal = querySnapshot.docs.reduce((total, doc) => {
                   const item = doc.data();
-                  return total + (item.price * item.quantity);
+                  return total + (item.price);
                 }, 0);
       
                 const tax = subtotal * 0.05; // Example: 5% tax
                 const total = subtotal + tax;
       
-                const summary = document.querySelector('.cart-summary');
+                const summary = document.getElementById("cart-summary");
                 summary.innerHTML = `
                   <h3>Order Summary</h3>
                   <p>Subtotal: $${subtotal.toFixed(2)}</p>
                   <p>Tax: $${tax.toFixed(2)}</p>
                   <p><strong>Total: $${total.toFixed(2)}</strong></p>
                   <div class="d-flex justify-content-end">
-                    <button class="btn btn-secondary me-2">Continue Shopping</button>
+                    <a href="menu.html"><button class="btn btn-secondary me-2">Continue Shopping</button></a>
                     <button class="btn btn-success">Proceed to Checkout</button>
                   </div>
                 `;
@@ -149,4 +145,17 @@
           }
         });
       </script>
+
+      <style>
+        .cart-item {
+            display: flex;
+            flex-direction: column; /* Stacks the items vertically */
+             /* Space between cart items */
+             width: 100%;
+        }
+
+        .cart-item .d-flex {
+            flex-direction: row; /* Ensure quantity controls stay horizontally aligned */
+        }
+      </style>
 </body>

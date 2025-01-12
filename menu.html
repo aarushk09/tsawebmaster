@@ -40,7 +40,7 @@
                     <p class="menu-card-description">Fresh avocado and cucumber wrapped in nori and sushi rice.</p>
                     <div class="menu-card-footer">
                         <span class="menu-card-price">$9.99</span>
-                        <button class="add-to-cart-button">Add to Cart</button>
+                        <button class="add-to-cart-button" data-name="Avocado Sushi Roll" data-description="Fresh avocado and cucumber wrapped in nori and sushi rice." data-price="9.99">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                     <p class="menu-card-description">Hearty lentils topped with creamy mashed potatoes and herbs.</p>
                     <div class="menu-card-footer">
                         <span class="menu-card-price">$14.99</span>
-                        <button class="add-to-cart-button">Add to Cart</button>
+                        <button class="add-to-cart-button" data-name="Lentil Shepherd's Pie" data-description="Hearty lentils topped with creamy mashed potatoes and herbs." data-price="14.99">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                     <p class="menu-card-description">A nourishing bowl of quinoa, roasted vegetables, and tahini dressing.</p>
                     <div class="menu-card-footer">
                         <span class="menu-card-price">$12.99</span>
-                        <button class="add-to-cart-button">Add to Cart</button>
+                        <button class="add-to-cart-button" data-name="Quinoa Bowl" data-description="A nourishing bowl of quinoa, roasted vegetables, and tahini dressing." data-price="12.99">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                     <p class="menu-card-description">Creamy arborio rice cooked with a medley of fresh mushrooms and herbs.</p>
                     <div class="menu-card-footer">
                         <span class="menu-card-price">$15.99</span>
-                        <button class="add-to-cart-button">Add to Cart</button>
+                        <button class="add-to-cart-button" data-name="Vegan Mushroom Risotto" data-description="Creamy arborio rice cooked with a medley of fresh mushrooms and herbs." data-price="15.99">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                     <p class="menu-card-description">Roasted sweet potatoes, black beans, and avocado topped with vegan sour cream.</p>
                     <div class="menu-card-footer">
                         <span class="menu-card-price">$11.99</span>
-                        <button class="add-to-cart-button">Add to Cart</button>
+                        <button class="add-to-cart-button" data-name="Sweet Potato Tacos" data-description="Roasted sweet potatoes, black beans, and avocado topped with vegan sour cream." data-price="11.99">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                     <p class="menu-card-description">Sautéed tofu with fresh vegetables, served with a savory soy-ginger sauce.</p>
                     <div class="menu-card-footer">
                         <span class="menu-card-price">$13.49</span>
-                        <button class="add-to-cart-button">Add to Cart</button>
+                        <button class="add-to-cart-button" data-name="Tofu Stir-Fry" data-description="Sautéed tofu with fresh vegetables, served with a savory soy-ginger sauce." data-price="13.49">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                     <p class="menu-card-description">Rich and moist chocolate cake topped with a velvety vegan ganache.</p>
                     <div class="menu-card-footer">
                         <span class="menu-card-price">$7.99</span>
-                        <button class="add-to-cart-button">Add to Cart</button>
+                        <button class="add-to-cart-button" data-name="Vegan Chocolate Cake" data-description="Rich and moist chocolate cake topped with a velvety vegan ganache." data-price="7.99">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
                     <p class="menu-card-description">Crispy cauliflower bites coated in spicy buffalo sauce, served with vegan ranch.</p>
                     <div class="menu-card-footer">
                         <span class="menu-card-price">$10.99</span>
-                        <button class="add-to-cart-button">Add to Cart</button>
+                        <button class="add-to-cart-button" data-name="Vegan Cauliflower" data-description="Crispy cauliflower bites coated in spicy buffalo sauce, served with vegan ranch." data-price="10.99">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -128,7 +128,7 @@
                     <p class="menu-card-description">Crispy falafel served with hummus, tabbouleh, and pita bread.</p>
                     <div class="menu-card-footer">
                         <span class="menu-card-price">$12.49</span>
-                        <button class="add-to-cart-button">Add to Cart</button>
+                        <button class="add-to-cart-button" data-name="Mediterranean Falafel Bowl" data-description="Crispy falafel served with hummus, tabbouleh, and pita bread." data-price="12.49">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -169,6 +169,51 @@
             <p>&copy; 2025 Vegan Restaurant. All rights reserved.</p>
         </div>
     </footer>
+
+    <script type="module">
+        import { auth, firestore } from "./firestore.js";
+        import { doc, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js';
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+
+        // Handle Add to Cart button click
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        // Get food info from the button data attributes
+                        const foodName = this.getAttribute('data-name');
+                        const foodDescription = this.getAttribute('data-description');
+                        const foodPrice = this.getAttribute('data-price');
+
+                        // Create an object to store the food data
+                        const foodData = {
+                            name: foodName,
+                            description: foodDescription,
+                            price: parseFloat(foodPrice),
+                            timestamp: new Date().toISOString(),
+                        };
+
+                        // Add food to the cart subcollection in Firestore
+                        const userDoc = doc(firestore, "users", user.uid);
+                        const reservationsCollection = collection(userDoc, "cart");
+
+                        try {
+                            // Use await to ensure the promise resolves before continuing
+                            await addDoc(reservationsCollection, foodData);
+                            alert(`${foodName} added to your cart!`);
+                        } catch (error) {
+                            console.error("Error adding to cart: ", error);
+                            alert("Failed to add to cart. Please try again.");
+                        }
+                    } else {
+                        alert("Please log in to add items to your cart.");
+                    }
+                });
+            });
+        });
+    </script>
     
 </body>
 </html>
