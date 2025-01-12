@@ -8,16 +8,25 @@
 </head>
 <body>
 
-  <nav class="nav">
-    <a href="index.html" class="nav-item">Home</a>
-    <a href="menu.html" class="nav-item">Menu</a>
-    <a href="about.html" class="nav-item">About Us</a>
-    <a href="#" class="nav-item">Contact</a>
-</nav>
+    <nav class="nav">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About Us</a>
+        <a href="login.html" class="nav-item">Login</a>
+        <a href="menu.html" class="nav-item">Menu</a>
+        <a href="ourApproach.html" class="nav-item">Approach</a>
+        <a href="sustainability.html" class="nav-item">Sustainability</a>
+        <a href="gallery.html" class="nav-item">Gallery</a>
+        <a href="orders.html" class="nav-item">Cart</a>
+        <a href="reservations.html" class="nav-item">Reservations</a>
+        <a href="rewards.html" class="nav-item">Rewards</a>
+        <a href="apply.html" class="nav-item">Apply</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+        <a href="references.html" class="nav-item">References</a>
+    </nav>
 
   <section class="reservation-section">
     <h2>Reservations</h2>
-    <form class="reservation-form">
+    <form class="reservation-form" id="reservation-form">
       <div class="form-row">
         <label for="name">Name:</label>
         <input type="text" id="name" placeholder="Your Name" />
@@ -40,5 +49,85 @@
       </div>
     </form>
   </section>
+
+
+  <script type="module">
+    import { auth, firestore } from "./firestore.js"
+    import { doc, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+    // Reservation Form Submission
+    document.getElementById("reservation-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Get form data
+      const name = document.getElementById("name").value;
+      const time = document.getElementById("time").value;
+      const date = document.getElementById("date").value;
+      const people = document.getElementById("people").value;
+
+      // Check if the user is logged in
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          try {
+            // Add reservation to the user's subcollection
+            const userDoc = doc(firestore, "users", user.uid);
+            const reservationsCollection = collection(userDoc, "reservations");
+
+            await addDoc(reservationsCollection, {
+              name,
+              time,
+              date,
+              people: parseInt(people),
+              createdAt: new Date().toISOString(),
+            });
+
+            alert("Reservation added successfully!");
+            document.getElementById("reservation-form").reset(); // Reset the form
+          } catch (error) {
+            console.error("Error adding reservation: ", error);
+            alert("Failed to add reservation. Please try again.");
+          }
+        } else {
+          alert("Please log in to make a reservation.");
+        }
+      });
+    });
+  </script>
+
+  <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <h3>About Us</h3>
+            <p>We serve innovative vegan dishes crafted with love and sustainability in mind. Join us in redefining the way we eat, one plant-based bite at a time.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="sustainability.html">Sustainability</a></li>
+                <li><a href="reservations.html">Reservations</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+            <a href="#" class="social-icon">Facebook</a>
+            <a href="#" class="social-icon">Instagram</a>
+            <a href="#" class="social-icon">Twitter</a>
+        </div>
+        <div class="footer-subscribe">
+            <h3>Subscribe to Updates</h3>
+            <form>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Vegan Restaurant. All rights reserved.</p>
+    </div>
+</footer>
+
+
 </body>
 </html>
