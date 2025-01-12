@@ -1,193 +1,185 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    color: #333;
-  }
-  
-  .nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
 }
 
 .nav-item {
-    text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 25px;
-    background-color: rgba(0, 128, 0, 0.7);
-    color: white;
-    transition: background-color 0.3s ease;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 25px;
+  background-color: rgba(0, 128, 0, 0.7);
+  color: white;
+  transition: background-color 0.3s ease;
 }
 
 .nav-item:hover {
-    background-color: rgba(0, 128, 0, 1);
+  background-color: rgba(0, 128, 0, 1);
 }
-  
-  /* Gallery Section */
-  .gallery-section {
-    max-width: 1200px;
-    margin: 2rem auto;
-    text-align: center; /* Center the heading */
-    padding: 1rem;
-  }
-  
-  .gallery-section h2 {
-    display: inline-block;
-    margin-bottom: 2rem;
-    border: 1px solid #333;
-    padding: 0.5rem 1rem;
-    text-transform: uppercase;
-  }
-  
-  /* 2×2 Grid Container */
-  .gallery-grid {
-    /* Adjust width/height as needed */
-    width: 800px;  
-    height: 500px;
-    margin: 0 auto;
-    position: relative;               
-    
-    display: grid;
-    grid-template-columns: 1fr 1fr;  
-    grid-template-rows: 1fr 1fr;      
-    border: 3px solid #333;           
-  }
-  
 
-  .gallery-grid::before, 
-  .gallery-grid::after {
-    content: "";
-    position: absolute;
-    background-color: #333; /* The color/thickness of dividing lines */
-  }
-  
-  /* Horizontal line across the middle */
-  .gallery-grid::before {
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    height: 3px;  /* line thickness */
-  }
-  
-  /* Vertical line down the middle */
-  .gallery-grid::after {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 3px;   /* line thickness */
-    height: 100%;
-  }
-  
-  /* Each quadrant (gallery item) */
-  .gallery-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    font-weight: 500;
-  }
-  
-  .footer {
-    background-color: #333;
-    color: #fff;
-    padding: 40px 20px;
+/* Gallery Section */
+.gallery-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  text-align: center; /* Center the heading */
+  padding: 1rem;
+}
+
+.gallery-section h2 {
+  display: inline-block;
+  margin-bottom: 2rem;
+  border: 1px solid #333;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  background-color: rgba(0, 128, 0, 0.1); /* Subtle background color */
+}
+
+/* Grid Layout */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* Two columns */
+  grid-template-rows: 1fr 1fr;     /* Two rows */
+  gap: 15px;                       /* Space between items */
+  width: 90%;                      /* Flexible width */
+  margin: 0 auto;
+}
+
+/* Gallery Items */
+.gallery-item {
+  border: 2px solid #333;          /* Border around images */
+  border-radius: 10px;             /* Rounded corners */
+  overflow: hidden;                /* Ensure content fits inside */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+/* Image Styling */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;               /* Ensures images are contained properly */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Hover effect */
+}
+
+/* Hover Effect */
+.gallery-item img:hover {
+  transform: scale(1.05);          /* Slight zoom on hover */
+  opacity: 0.9;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 20px;
 }
 
 .footer-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .footer-about, .footer-links, .footer-social, .footer-subscribe {
-    flex: 1 1 200px;
-    margin: 10px;
+  flex: 1 1 200px;
+  margin: 10px;
 }
 
 .footer h3 {
-    margin-bottom: 15px;
-    font-size: 1.2em;
+  margin-bottom: 15px;
+  font-size: 1.2em;
 }
 
 .footer p {
-    line-height: 1.6;
-    font-size: 0.9em;
+  line-height: 1.6;
+  font-size: 0.9em;
 }
 
 .footer-links ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .footer-links ul li {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .footer-links ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .footer-links ul li a:hover {
-    color: #76c38f;
+  color: #76c38f;
 }
 
 .social-icon {
-    display: inline-block;
-    margin-right: 10px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.9em;
-    transition: color 0.3s ease;
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: color 0.3s ease;
 }
 
 .social-icon:hover {
-    color: #76c38f;
+  color: #76c38f;
 }
 
 .footer-subscribe form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .footer-subscribe input {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
 }
 
 .footer-subscribe button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #76c38f;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  border: none;
+  background-color: #76c38f;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .footer-subscribe button:hover {
-    background-color: #5ca872;
+  background-color: #5ca872;
 }
 
 .footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.8em;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.8em;
 }

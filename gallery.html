@@ -28,62 +28,68 @@
         function logoutUser() {
         signOut(auth)
             .then(() => {
-            // User signed out successfully
             console.log("User logged out");
-            window.location.href = "login.html";  // Redirect to the login page after logout
+            window.location.href = "login.html"; // Redirect to login after logout
             })
             .catch((error) => {
-            // Handle errors if any
             console.error("Error logging out: ", error);
             });
         }
         document.getElementById("logout-button").addEventListener("click", logoutUser);
     </script>
 
-  <section class="gallery-section">
-    <h2>Gallery</h2>
+    <section class="gallery-section">
+        <h2>Gallery</h2>
 
-    <div class="gallery-grid">
-      <div class="gallery-item">Picture 1</div>
-      <div class="gallery-item">Picture 2</div>
-      <div class="gallery-item">Picture 3</div>
-      <div class="gallery-item">Picture 4</div>
-    </div>
-  </section>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Placeholder Image 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Placeholder Image 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Placeholder Image 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Placeholder Image 4">
+            </div>
+        </div>
+    </section>
 
-  <footer class="footer">
-    <div class="footer-container">
-        <div class="footer-about">
-            <h3>About Us</h3>
-            <p>We serve innovative vegan dishes crafted with love and sustainability in mind. Join us in redefining the way we eat, one plant-based bite at a time.</p>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>About Us</h3>
+                <p>We serve innovative vegan dishes crafted with love and sustainability in mind. Join us in redefining the way we eat, one plant-based bite at a time.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="sustainability.html">Sustainability</a></li>
+                    <li><a href="reservations.html">Reservations</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Instagram</a>
+                <a href="#" class="social-icon">Twitter</a>
+            </div>
+            <div class="footer-subscribe">
+                <h3>Subscribe to Updates</h3>
+                <form>
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
         </div>
-        <div class="footer-links">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="sustainability.html">Sustainability</a></li>
-                <li><a href="reservations.html">Reservations</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Vegan Restaurant. All rights reserved.</p>
         </div>
-        <div class="footer-social">
-            <h3>Follow Us</h3>
-            <a href="#" class="social-icon">Facebook</a>
-            <a href="#" class="social-icon">Instagram</a>
-            <a href="#" class="social-icon">Twitter</a>
-        </div>
-        <div class="footer-subscribe">
-            <h3>Subscribe to Updates</h3>
-            <form>
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2025 Vegan Restaurant. All rights reserved.</p>
-    </div>
-</footer>
+    </footer>
 
 </body>
 </html>
