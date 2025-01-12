@@ -40,7 +40,7 @@ body {
 .gallery-section {
   max-width: 1200px;
   margin: 2rem auto;
-  text-align: center; /* Center the heading */
+  text-align: center; 
   padding: 1rem;
 }
 
@@ -51,25 +51,25 @@ body {
   padding: 0.5rem 1rem;
   text-transform: uppercase;
   font-size: 1.8rem;
-  background-color: rgba(0, 128, 0, 0.1); /* Subtle background color */
+  background-color: rgba(0, 128, 0, 0.1);
 }
 
 /* Grid Layout */
 .gallery-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* Two columns */
-  grid-template-rows: 1fr 1fr;     /* Two rows */
-  gap: 15px;                       /* Space between items */
-  width: 90%;                      /* Flexible width */
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr 1fr;  
+  gap: 15px;             
+  width: 90%;
   margin: 0 auto;
 }
 
 /* Gallery Items */
 .gallery-item {
-  border: 2px solid #333;          /* Border around images */
-  border-radius: 10px;             /* Rounded corners */
-  overflow: hidden;                /* Ensure content fits inside */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border: 2px solid #333;       
+  border-radius: 10px;             
+  overflow: hidden;             
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,13 +80,13 @@ body {
 .gallery-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;               /* Ensures images are contained properly */
-  transition: transform 0.3s ease, opacity 0.3s ease; /* Hover effect */
+  object-fit: cover;             
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Hover Effect */
 .gallery-item img:hover {
-  transform: scale(1.05);          /* Slight zoom on hover */
+  transform: scale(1.05);      
   opacity: 0.9;
 }
 
