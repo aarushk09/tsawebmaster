@@ -7,7 +7,7 @@ body, html {
 }
 
 .hero {
-    background: url('restaurant.jpg') no-repeat center center/cover;
+    background: url('restaurant1.jpg') no-repeat center center/cover;
     height: 300px;
     display: flex;
     justify-content: center;
@@ -35,6 +35,7 @@ body, html {
     padding: 10px 0;
 }
 
+
 .nav-item {
     margin: 0 15px;
     padding: 10px 20px;
@@ -42,7 +43,7 @@ body, html {
     color: white;
     text-decoration: none;
     border-radius: 25px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .nav-item:hover,
