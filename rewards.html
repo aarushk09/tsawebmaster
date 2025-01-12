@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rewards</title>
     <link rel="stylesheet" href="rewardsstyles.css" />
-    <!-- Consider adding a Google Font for better typography -->
+    <!-- Google Font for better typography -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -63,11 +63,16 @@
             <div class="rewards-display">
                 <h2>Your Rewards</h2>
                 <div class="points-container">
-                    <p>Points: <span id="points">0</span></p>
+                    <p>Points: <span id="points">0</span>/100</p>
                 </div>
-                <div class="points-buttons">
-                    <button class="btn add-btn" onclick="addPoints()">+50 Points</button>
-                    <button class="btn remove-btn" onclick="removePoints()">-50 Points</button>
+                
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+                </div>
+
+                <div class="goal-message" id="goal-message" style="display: none;">
+                    <p>Congratulations! You've met your goal.</p>
                 </div>
             </div>
         </div>
