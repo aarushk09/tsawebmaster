@@ -1,64 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rewards</title>
-    <link rel="stylesheet" href="rewardsstyles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Rewards & Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        #progress-bar {
+            width: 0;
+            height: 30px;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            transition: width 0.5s ease-in-out;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .menu-item button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        #cart {
+            margin-top: 20px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #e9e9e9;
+            border-radius: 5px;
+        }
+        .cart-item button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        #reward-message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .form-container input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
-
 <body>
-    <nav class="nav">
-        <ul>
-            <a href="index.html" class="nav-item">Home</a>
-            <a href="about.html" class="nav-item">About Us</a>
-            <a href="menu.html" class="nav-item">Menu</a>
-            <a href="#" class="nav-item">Our Approach</a>
-            <a href="#" class="nav-item">Sustainability</a>
-            <a href="#" class="nav-item">Gallery</a>
-            <a href="#" class="nav-item">Orders</a>
-            <a href="#" class="nav-item">Orders</a>
-            <a href="reservations.html" class="nav-item">Reservations</a>
-            <a href="#" class="nav-item">Rewards</a>
-            <a href="#" class="nav-item">Apply</a>
-        </ul>
-    </nav>
-
-    <section class="rewards-section">
-        <h2>Rewards</h2>
-
-        <div class="rewards-content">
-            <div class="rewards-blurb">
-                <p>
-                    Our rewards program is designed to show our gratitude to our loyal customers. By joining, you’ll
-                    earn points every time you dine with us or place an order, which can be redeemed for special perks,
-                    discounts, and exclusive menu offerings. You’ll also receive personalized deals for birthdays,
-                    holidays, and other celebrations, making each visit a little more special. Whether you prefer to
-                    dine in, take out, or have meals delivered to your door, you’ll find countless ways to earn and
-                    enjoy the benefits of our rewards program. We can’t wait to reward you for being an essential part
-                    of our family!
-                </p>
-            </div>
-
-            <div class="login-box">
-                <h3>Login/Sign Up</h3>
-                <form class="login-form">
-                    <div class="form-row">
-                        <label for="email">Email Address:</label>
-                        <input type="email" id="email" placeholder="Enter your email" />
-                    </div>
-
-                    <div class="form-row">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" placeholder="Enter your password" />
-                    </div>
-
-                    <button type="submit">Enter</button>
-                </form>
-            </div>
+    <div class="container">
+        <h1>Restaurant Rewards & Login</h1>
+        
+        <div id="login-form" class="form-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" onclick="showSignup()">Sign up</a></p>
         </div>
-    </section>
-</body>
 
+        <div id="signup-form" class="form-container hidden">
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <input type="text" id="signup-name" placeholder="Full Name" required>
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+        </div>
+
+        <div id="rewards-section" class="hidden">
+            <div class="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+            <p>Progress: <span id="progress-text">0</span>%</p>
+            <div id="reward-message"></div>
+            
+            <h2>Menu</h2>
+            <div id="menu">
+                <div class="menu-item">
+                    <span>Pizza</span>
+                    <button onclick="addToCart('Pizza')">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <span>Burger</span>
+                    <button onclick="addToCart('Burger')">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <span>Salad</span>
+                    <button onclick="addToCart('Salad')">Add to Cart</button>
+                </div>
+                <div class="menu-item">
+                    <span>Pasta</span>
+                    <button onclick="addToCart('Pasta')">Add to Cart</button>
+                </div>
+            </div>
+
+            <h2>Cart</h2>
+            <div id="cart"></div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDHouvpD3AU0DC3rB0WCNkaKYG1iZeqAwA",
+            authDomain: "webmaster-5b278.firebaseapp.com",
+            projectId: "webmaster-5b278",
+            storageBucket: "webmaster-5b278.firebasestorage.app",
+            messagingSenderId: "852794630816",
+            appId: "1:852794630816:web:fda9cee57c024dd70b1fc5",
+            measurementId: "G-FLM3H1KC32"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const firestore = firebase.firestore();
+
+        // Login and Signup functionality
+        function showLogin() {
+            document.getElementById("login-form").classList.remove("hidden");
+            document.getElementById("signup-form").classList.add("hidden");
+        }
+
+        function showSignup() {
+            document.getElementById("signup-form").classList.remove("hidden");
+            document.getElementById("login-form").classList.add("hidden");
+        }
+
+        document.getElementById("signupForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const email = document.getElementById("signup-email").value;
+            const password = document.getElementById("signup-password").value;
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert("User signed up successfully!");
+                    showRewardsSection();
+                })
+                .catch((error) => {
+                    alert(`Error: ${error.message}`);
+                });
+        });
+
+        document.getElementById("loginForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const email = document.getElementById("login-email").value;
+            const password = document.getElementById("login-password").value;
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert("Login successful!");
+                    showRewardsSection();
+                })
+                .catch((error) => {
+                    alert(`Error: ${error.message}`);
+                });
+        });
+
+        function showRewardsSection() {
+            document.getElementById("login-form").classList.add("hidden");
+            document.getElementById("signup-form").classList.add("hidden");
+            document.getElementById("rewards-section").classList.remove("hidden");
+        }
+
+        // Rewards and Cart functionality
+        let progress = 0;
+        const cart = [];
+
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = progress;
+
+            const rewardMessage = document.getElementById('reward-message');
+            if (progress >= 100) {
+                rewardMessage.textContent = "Congratulations! You've earned a free meal!";
+            } else {
+                rewardMessage.textContent = `${100 - progress} more points until your next reward!`;
+            }
+        }
+
+        function addToCart(item) {
+            cart.push(item);
+            updateCart();
+            progress = Math.min(progress + 5, 100);
+            updateProgressBar();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+            progress = Math.max(progress - 5, 0);
+            updateProgressBar();
+        }
+
+        function updateCart() {
+            const cartElement = document.getElementById('cart');
+            cartElement.innerHTML = '';
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <span>${item}</span>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartElement.appendChild(cartItem);
+            });
+        }
+
+        updateProgressBar();
+    </script>
+</body>
 </html>
