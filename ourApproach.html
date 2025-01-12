@@ -10,20 +10,38 @@
     <div class="hero">
         <div class="container">
                 <!-- Navigation -->
-    <nav class="nav">
-        <a href="index.html" class="nav-item">Home</a>
-        <a href="about.html" class="nav-item">About Us</a>
-        <a href="login.html" class="nav-item">Login</a>
-        <a href="menu.html" class="nav-item">Menu</a>
-        <a href="ourApproach.html" class="nav-item">Approach</a>
-        <a href="sustainability.html" class="nav-item">Sustainability</a>
-        <a href="gallery.html" class="nav-item">Gallery</a>
-        <a href="orders.html" class="nav-item">Cart</a>
-        <a href="reservations.html" class="nav-item">Reservations</a>
-        <a href="rewards.html" class="nav-item">Rewards</a>
-        <a href="apply.html" class="nav-item">Apply</a>
-        <a href="references.html" class="nav-item">References</a>
-    </nav>
+                <nav class="nav">
+                    <a href="index.html" class="nav-item">Home</a>
+                    <a href="about.html" class="nav-item">About Us</a>
+                    <a href="menu.html" class="nav-item">Menu</a>
+                    <a href="ourApproach.html" class="nav-item">Approach</a>
+                    <a href="sustainability.html" class="nav-item">Sustainability</a>
+                    <a href="gallery.html" class="nav-item">Gallery</a>
+                    <a href="orders.html" class="nav-item">Cart</a>
+                    <a href="reservations.html" class="nav-item">Reservations</a>
+                    <a href="rewards.html" class="nav-item">Rewards</a>
+                    <a href="apply.html" class="nav-item">Apply</a>
+                    <a href="references.html" class="nav-item">References</a>
+                    <a href="login.html" class="nav-item" style="background-color: red" id="logout-button">Logout</a>
+                </nav>
+                <script type="module">
+                    import { signOut } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+                    import { auth } from "./firestore.js";
+                    // Function to log the user out
+                    function logoutUser() {
+                    signOut(auth)
+                        .then(() => {
+                        // User signed out successfully
+                        console.log("User logged out");
+                        window.location.href = "login.html";  // Redirect to the login page after logout
+                        })
+                        .catch((error) => {
+                        // Handle errors if any
+                        console.error("Error logging out: ", error);
+                        });
+                    }
+                    document.getElementById("logout-button").addEventListener("click", logoutUser);
+                </script>
         </div>
     </div>
     <div class="approach-section">
