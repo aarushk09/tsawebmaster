@@ -13,27 +13,33 @@ async function displayRewards() {
     const user = auth.currentUser;
     if (user) {
         const userDocRef = doc(firestore, "users", user.uid);
-        const userDoc = await getDoc(userDocRef);
+        try {
+            const userDoc = await getDoc(userDocRef);
 
-        if (userDoc.exists()) {
-            const userData = userDoc.data();
-            const points = Math.min(Math.floor(userData.points || 0), 100); // Cap points at 100
-            document.getElementById('points').innerText = `${points}/100`;
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+                const points = Math.min(Math.floor(userData.points || 0), 100); // Cap points at 100
+                document.getElementById('points').innerText = `${points}/100`;
 
-            // Update progress bar
-            const progressFill = document.getElementById('progress-fill');
-            const progressPercentage = (points / 100) * 100;
-            progressFill.style.width = `${progressPercentage}%`;
+                // Update progress bar
+                const progressFill = document.getElementById('progress-fill');
+                const progressPercentage = (points / 100) * 100;
+                progressFill.style.width = `${progressPercentage}%`;
 
-            // Show goal message if points >= 100
-            const goalMessage = document.getElementById('goal-message');
-            if (points >= 100) {
-                goalMessage.style.display = 'block';
+                // Show goal message if points >= 100
+                const goalMessage = document.getElementById('goal-message');
+                if (points >= 100) {
+                    goalMessage.style.display = 'block';
+                } else {
+                    goalMessage.style.display = 'none';
+                }
             } else {
-                goalMessage.style.display = 'none';
+                console.error("No such user document!");
+                document.getElementById('points').innerText = '0/100';
+                resetProgressBar();
             }
-        } else {
-            console.error("No such user document!");
+        } catch (error) {
+            console.error("Error fetching user data:", error);
             document.getElementById('points').innerText = '0/100';
             resetProgressBar();
         }
@@ -81,6 +87,13 @@ function initializeRewards() {
             updatePoints();
         } else {
             displayRewards();
+        }
+    });
+
+    // Optional: Update points when the cart total changes
+    window.addEventListener('storage', (event) => {
+        if (event.key === 'cartTotal') {
+            updatePoints();
         }
     });
 }
