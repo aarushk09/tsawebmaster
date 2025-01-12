@@ -301,6 +301,27 @@ body, html {
 }
 
 
+.add-to-cart-button {
+    padding: 10px 15px;
+    background-color: #76c38f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-to-cart-button:hover {
+    background-color: #5ca872;
+    transform: scale(1.05);
+}
+
+.add-to-cart-button:active {
+    transform: scale(1);
+}
+
+
 .footer {
     background-color: #333;
     color: #fff;
