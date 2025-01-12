@@ -16,7 +16,7 @@ body {
     backdrop-filter: blur(10px);
   }
   .nav-item {
-    text-decoration: none;
+    text-decoration: none ;
     padding: 8px 15px;
     border-radius: 25px;
     background-color: rgba(0, 128, 0, 0.7);
