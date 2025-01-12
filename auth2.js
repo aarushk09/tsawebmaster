@@ -51,7 +51,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     try {
         await signInWithEmailAndPassword(auth, email, password);
         // Redirect to rewards page after successful login
-        window.location.href = "rewards.html";
+        window.location.href = "index.html";
     } catch (error) {
         console.error("Error logging in:", error);
         alert("Login failed: " + error.message);
